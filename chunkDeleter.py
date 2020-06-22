@@ -32,9 +32,12 @@ def checkBlock(world,x,z):
         chunk=False
     return chunk
 def deleteChunk(world,x,z,dim):
-    if(checkChunk(world,x,z,dim)):
+    try:
         chunk=bedrock.Chunk(world.db,x,z,dim)
         chunk.delete(world.db)
+        print("chunk ({}, {}) deleted".format(x,z))
+    except:
+        pass
 
 
 
